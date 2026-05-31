@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 import base64
-import os  # ✅ FIX 1: needed for PORT env var
+import os
+from fastapi import FastAPI
+
+port = int(os.getenv("PORT", 8000))
+
+app = FastAPI(...)
 from typing import List, Optional
 
 import cv2
