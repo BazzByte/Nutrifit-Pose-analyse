@@ -1,9 +1,3 @@
-# =============================================================================
-# exercises/base_exercise.py
-# الكلاس الأساسي المجرد — محدَّث بدعم اللغتين والخط العربي
-# Abstract base — updated with i18n and Arabic renderer support
-# =============================================================================
-
 from __future__ import annotations
 
 import time
