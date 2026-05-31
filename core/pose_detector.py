@@ -7,9 +7,6 @@ import cv2
 import mediapipe as mp
 import numpy as np
 
-
-# فهارس Landmarks في MediaPipe (33 نقطة)
-# MediaPipe Pose landmark indices
 class MP_LANDMARKS:
     NOSE          = 0
     LEFT_EYE      = 2
