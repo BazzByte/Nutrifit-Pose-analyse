@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["libGL", "glib", "gcc-unwrapped", "xorg.libxcb", "xorg.libX11", "xorg.libXext", "xorg.libXrender", "xorg.libXau", "libsm6", "libxext6", "libx11", "fontconfig", "freetype"]
+nixPkgs = ["libGL", "glib", "gcc-unwrapped", "xorg.libxcb", "xorg.libX11", "xorg.libXext", "xorg.libXrender", "libsm6", "libxext6", "fontconfig", "freetype"]
 
 [phases.build]
 cmds = ["pip install -r requirements.txt"]
