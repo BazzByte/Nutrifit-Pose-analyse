@@ -1,5 +1,14 @@
 [phases.setup]
-nixPkgs = ["libGL", "glib", "gcc-unwrapped"]
+nixPkgs = [
+  "libGL",
+  "glib",
+  "gcc-unwrapped",
+  "zlib",
+]
+
+[phases.setup.aptPkgs]
+
+packages = ["libglib2.0-0", "libgl1-mesa-glx"]
 
 [phases.build]
 cmds = ["pip install -r requirements.txt"]
