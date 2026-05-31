@@ -1,19 +1,9 @@
-# =============================================================================
-# core/angle_utils.py
-# دوال حساب الزوايا والمسافات
-# Geometry helpers for angle / distance calculations
-# =============================================================================
-
 import math
 from typing import Tuple, Sequence
 
 import numpy as np
 
 
-# --------------------------------------------------------------------------- #
-# النوع الأساسي: نقطة ثنائية الأبعاد أو ثلاثية
-# Basic point type (2-D or 3-D from MediaPipe)
-# --------------------------------------------------------------------------- #
 Point2D = Tuple[float, float]
 Point3D = Tuple[float, float, float]
 
