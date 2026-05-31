@@ -1,14 +1,3 @@
-# =============================================================================
-# tests/test_all.py
-# اختبارات الوحدات الشاملة — تستخدم fixtures من conftest.py
-# Comprehensive unit tests — uses conftest.py fixtures
-#
-# تشغيل / Run:
-#   pytest tests/ -v
-#   pytest tests/ -v --cov=. --cov-report=term-missing
-#   pytest tests/test_all.py::TestI18n -v          ← وحدة محددة
-# =============================================================================
-
 import json
 import sys
 from pathlib import Path
@@ -17,13 +6,6 @@ from unittest.mock import MagicMock, patch
 import numpy as np
 import pytest
 
-# conftest.py يضيف ROOT لـ sys.path تلقائياً
-# conftest.py auto-adds ROOT to sys.path
-
-
-# =============================================================================
-# ── core/angle_utils ─────────────────────────────────────────────────────────
-# =============================================================================
 from core.angle_utils import (
     calculate_angle, angle_to_score, smooth_value,
     euclidean_distance, midpoint, normalize_angle, landmark_to_pixel,
@@ -427,9 +409,6 @@ class TestWorkoutAnalyzer:
             assert isinstance(angles, dict)
 
 
-# =============================================================================
-# ── HUD Renderer ─────────────────────────────────────────────────────────────
-# =============================================================================
 class TestHUDRenderer:
     """اختبارات واجهة HUD / HUD renderer tests."""
 
@@ -480,9 +459,6 @@ class TestHUDRenderer:
         assert out.shape == blank_frame.shape
 
 
-# =============================================================================
-# ── arabic_renderer ──────────────────────────────────────────────────────────
-# =============================================================================
 class TestArabicRenderer:
     """اختبارات محرك النصوص العربية / Arabic renderer tests."""
 
