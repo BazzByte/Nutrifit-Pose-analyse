@@ -1,9 +1,3 @@
-# =============================================================================
-# tests/conftest.py
-# إعدادات مشتركة لجميع الاختبارات (pytest fixtures)
-# Shared fixtures for all tests
-# =============================================================================
-
 import sys
 from pathlib import Path
 from unittest.mock import MagicMock
@@ -11,16 +5,11 @@ from unittest.mock import MagicMock
 import numpy as np
 import pytest
 
-# أضف مجلد المشروع الجذر لمسار البحث حتى تعمل الـ imports
-# Add project root to sys.path so all imports work correctly
 ROOT = Path(__file__).parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 
-# ─────────────────────────────────────────────────────────────────────────────
-# Fixtures مشتركة / Shared fixtures
-# ─────────────────────────────────────────────────────────────────────────────
 
 @pytest.fixture
 def blank_frame():
