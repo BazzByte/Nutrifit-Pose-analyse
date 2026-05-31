@@ -1,7 +1,3 @@
-# =============================================================================
-# exercises/pullup_analyzer.py  — v2 (i18n + Arabic)
-# =============================================================================
-
 from __future__ import annotations
 from typing import Dict, Optional, Tuple
 
