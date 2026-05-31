@@ -1,9 +1,3 @@
-# =============================================================================
-# exercises/crunch_analyzer.py
-# محلل تمرين البطن (Crunch / Crunches)
-# Abdominal crunch exercise analyzer
-# =============================================================================
-
 from __future__ import annotations
 from typing import Dict, Optional, Tuple
 
