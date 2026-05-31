@@ -1,9 +1,3 @@
-# =============================================================================
-# exercises/jumpingjack_analyzer.py
-# محلل تمرين القفز المتفرج (Jumping Jack)
-# Jumping Jack exercise analyzer
-# =============================================================================
-
 from __future__ import annotations
 from typing import Dict, Optional, Tuple
 
