@@ -1,14 +1,7 @@
-# =============================================================================
-# config/thresholds.py
-# عتبات وإعدادات كل التمارين الستة
-# Thresholds & config for all 6 exercises
-# =============================================================================
-
 from dataclasses import dataclass, field
 from typing import Dict, Tuple
 
 
-# ─────────────────────────────────────────────────────────────────────────────
 @dataclass
 class PushupThresholds:
     """تمرين الضغط / Push-up"""
