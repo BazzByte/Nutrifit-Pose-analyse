@@ -1,0 +1,24 @@
+# ✅ FIX: opencv-python-headless (NOT opencv-python!)
+# opencv-python يحتاج X11/display - مش موجود على Railway
+# opencv-python-headless يشتغل بدون display بيئات السيرفر
+
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+python-multipart>=0.0.6
+pydantic>=2.0.0
+
+# ✅ OpenCV Headless — بدون X11 / no display needed
+opencv-python-headless>=4.8.0
+
+# MediaPipe — pose detection
+mediapipe>=0.10.0
+
+# Numerics
+numpy>=1.24.0
+
+# Arabic font rendering (optional - only if arabic_renderer.py needs it)
+Pillow>=10.0.0
+
+# Arabic text reshaping (optional - for RTL text)
+arabic-reshaper>=3.0.0
+python-bidi>=0.4.2
