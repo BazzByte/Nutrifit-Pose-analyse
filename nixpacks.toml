@@ -1,12 +1,9 @@
-# nixpacks.toml
-# ✅ FIX: System dependencies for MediaPipe + OpenCV on Railway (Linux)
-# MediaPipe needs libGL.so.1 and glib — not available by default on Railway
-
 [phases.setup]
 nixPkgs = [
-  "libGL",           # libGL.so.1 — مطلوب لـ MediaPipe و OpenCV
-  "glib",            # libglib-2.0.so.0 — مطلوب لـ MediaPipe
-  "stdenv.cc.cc.lib",# libstdc++.so.6
+  "libGL",
+  "glib",
+  "stdenv.cc.cc.lib",
+  "xorg.libxcb"
 ]
 
 [phases.build]
