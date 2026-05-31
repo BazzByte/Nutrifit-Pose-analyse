@@ -1,9 +1,3 @@
-# =============================================================================
-# core/rep_counter.py
-# نظام حساب التكرارات الدقيق
-# Accurate repetition counting system with state machine
-# =============================================================================
-
 import time
 from enum import Enum, auto
 from typing import Optional
@@ -13,11 +7,11 @@ from config.thresholds import REP_CFG, RepCounterConfig
 
 class RepPhase(Enum):
     """مراحل التكرار / Phases of a single repetition."""
-    IDLE       = auto()   # في انتظار البدء
-    GOING_DOWN = auto()   # في طريق النزول / going to bottom
-    BOTTOM     = auto()   # وصل الأسفل / at bottom position
-    GOING_UP   = auto()   # في طريق الصعود / going to top
-    TOP        = auto()   # وصل الأعلى / at top position
+    IDLE       = auto()
+    GOING_DOWN = auto()   
+    BOTTOM     = auto()  
+    GOING_UP   = auto()   
+    TOP        = auto()  
 
 
 class RepCounter:
