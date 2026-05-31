@@ -1,10 +1,5 @@
 [phases.setup]
-nixPkgs = [
-  "libGL",
-  "glib",
-  "stdenv.cc.cc.lib",
-  "xorg.libxcb"
-]
+nixPkgs = ["libGL", "glib", "gcc-unwrapped"]
 
 [phases.build]
 cmds = ["pip install -r requirements.txt"]
