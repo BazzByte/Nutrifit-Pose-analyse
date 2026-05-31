@@ -6,7 +6,6 @@ from fastapi import FastAPI
 
 port = int(os.getenv("PORT", 8000))
 
-app = FastAPI(...)
 from typing import List, Optional
 
 import cv2
@@ -36,7 +35,6 @@ if _HAS_FASTAPI:
         allow_methods=["*"],
         allow_headers=["*"])
 
-    # ✅ FIX 2: startup check
     @app.on_event("startup")
     async def startup_event():
         print("[INFO] Fitness AI API starting...")
