@@ -1,11 +1,13 @@
 from __future__ import annotations
-from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from exercises.base_exercise import ExerciseResult
 
 import cv2
 import numpy as np
 
 from config.thresholds import VIZ_CFG, VisualizationConfig
-from exercises.base_exercise import ExerciseResult
 from visualization.arabic_renderer import renderer as ar
 from visualization.i18n import I18n, i18n as _global_i18n
 
@@ -53,11 +55,8 @@ class HUDRenderer:
         t     = self.i18n.t
 
         frame = self._draw_top_bar(frame, result.feedback_text, w, h)
-
         frame = self._draw_bottom_bar(frame, result, exercise_type, w, h, t)
-
         self._draw_progress_bar(frame, result.percentage, w, h)
-
         frame = self._draw_history(frame, result.feedback_history, w, h)
 
         if fps > 0:
