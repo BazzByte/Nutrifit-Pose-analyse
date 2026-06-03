@@ -1,9 +1,3 @@
-# =============================================================================
-# visualization/skeleton_drawer.py  — v2
-# رسم HUD الكامل مع دعم العربية
-# Full HUD renderer with Arabic text support via Pillow
-# =============================================================================
-
 from __future__ import annotations
 from typing import List, Optional, Tuple
 
@@ -16,7 +10,6 @@ from visualization.arabic_renderer import renderer as ar
 from visualization.i18n import I18n, i18n as _global_i18n
 
 
-# اسم كل تمرين بالعربي والإنجليزي
 _EXERCISE_NAMES = {
     "pushup":      {"ar": "تمرين الضغط",     "en": "Push-ups"},
     "pullup":      {"ar": "تمرين العقلة",    "en": "Pull-ups"},
@@ -47,7 +40,6 @@ class HUDRenderer:
         self.cfg  = cfg
         self.i18n = i18n
 
-    # ------------------------------------------------------------------ #
     def render(self,
                result: ExerciseResult,
                exercise_type: str,
@@ -60,39 +52,30 @@ class HUDRenderer:
         h, w  = frame.shape[:2]
         t     = self.i18n.t
 
-        # 1. شريط علوي: التعليق
         frame = self._draw_top_bar(frame, result.feedback_text, w, h)
 
-        # 2. شريط سفلي: تكرارات + نسبة + مرحلة
         frame = self._draw_bottom_bar(frame, result, exercise_type, w, h, t)
 
-        # 3. شريط التقدم
         self._draw_progress_bar(frame, result.percentage, w, h)
 
-        # 4. تاريخ التعليقات
         frame = self._draw_history(frame, result.feedback_history, w, h)
 
-        # 5. FPS
         if fps > 0:
             cv2.putText(frame, f"FPS:{fps:.0f}", (10, 30),
                         cv2.FONT_HERSHEY_SIMPLEX, 0.55, (160,160,160), 1, cv2.LINE_AA)
 
-        # 6. Calibration overlay
         if result.is_calibrating:
             frame = self._draw_calibration(frame, w, h, t)
 
         return frame
 
-    # ------------------------------------------------------------------ #
     def _draw_top_bar(self, frame, feedback, w, h):
         bar_h = 60
-        # خلفية شبه شفافة
         overlay = frame.copy()
         cv2.rectangle(overlay, (0, 0), (w, bar_h), (15, 15, 15), -1)
         cv2.addWeighted(overlay, 0.78, frame, 0.22, 0, frame)
         cv2.rectangle(frame, (0, bar_h-1), (w, bar_h), (60,60,60), 1)
 
-        # النص — ارسم بالوسط
         font_sz = self.cfg.font_size_medium
         tw, th  = ar.get_text_size(feedback, font_sz)
         x = max(8, (w - tw) // 2)
@@ -101,7 +84,6 @@ class HUDRenderer:
                             color=(255,255,255), bold=True)
         return frame
 
-    # ------------------------------------------------------------------ #
     def _draw_bottom_bar(self, frame, result, exercise_type, w, h, t):
         bar_h  = 90
         bar_y  = h - bar_h
@@ -114,14 +96,12 @@ class HUDRenderer:
         ex_label = _EXERCISE_NAMES.get(exercise_type, {}).get(lang, exercise_type)
         reps_label = t("reps")
 
-        # ── اسم التمرين + تكرارات (يسار) ──
         frame = ar.put_text(frame, ex_label, (12, bar_y + 8),
                             self.cfg.font_size_small, (180,180,180))
         frame = ar.put_text(frame, f"{reps_label}: {result.rep_count}",
                             (12, bar_y + 36),
                             self.cfg.font_size_large + 4, (100,255,100), bold=True)
 
-        # ── نسبة الصحة (وسط) ──
         pct_color = self._pct_color(result.percentage)
         score_label = t("form_score")
         pct_str     = f"{result.percentage:.0f}%"
@@ -137,7 +117,6 @@ class HUDRenderer:
                             self.cfg.font_size_large + 10,
                             pct_color, bold=True)
 
-        # ── المرحلة (يمين) ──
         phase_str = result.phase_label
         tw, _  = ar.get_text_size(phase_str, self.cfg.font_size_medium)
         frame  = ar.put_text(frame, phase_str,
@@ -145,7 +124,6 @@ class HUDRenderer:
                              self.cfg.font_size_medium, (0,200,255))
         return frame
 
-    # ------------------------------------------------------------------ #
     def _draw_progress_bar(self, frame, pct, w, h):
         bar_y   = h - 95
         bar_x   = 10
@@ -162,7 +140,6 @@ class HUDRenderer:
         cv2.rectangle(frame, (bar_x, bar_y), (bar_x + max_w, bar_y + bar_ht),
                       (100,100,100), 1)
 
-    # ------------------------------------------------------------------ #
     def _draw_history(self, frame, history, w, h):
         if not history: return frame
         x_start = w - 300
@@ -178,7 +155,6 @@ class HUDRenderer:
                                 sz, c)
         return frame
 
-    # ------------------------------------------------------------------ #
     def _draw_calibration(self, frame, w, h, t):
         overlay = frame.copy()
         cv2.rectangle(overlay, (0, 0), (w, h), (0,0,0), -1)
@@ -198,7 +174,6 @@ class HUDRenderer:
                             self.cfg.font_size_medium, (200,200,200))
         return frame
 
-    # ------------------------------------------------------------------ #
     @staticmethod
     def _pct_color(pct: float) -> Tuple[int,int,int]:
         if pct >= 80: return (0, 220, 50)
